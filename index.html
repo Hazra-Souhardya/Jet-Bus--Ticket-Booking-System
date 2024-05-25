@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jet Bus</title>
+    <style>
+        /* Dropdown button */
+        .dropbtn {
+            font-size: 20px;
+            font-weight: bold;
+            background-color: transparent;
+            color: inherit;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Dropdown content (hidden by default) */
+        .dropdown-content {
+            display: none;
+            color: black;
+            position: absolute;
+            background-color: #0fa0ee;
+            min-width: 160px;
+            border-radius: 10px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        /* Links inside the dropdown */
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            border-radius: 10px;
+        }
+
+        /* Change color of dropdown links on hover */
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        /* Show the dropdown menu on hover */
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Change the background color of the dropdown button when the dropdown content is shown */
+        .dropdown:hover .dropbtn {
+            background-color: #04b7f9;
+        }
+
+        /* Sub-dropdown button */
+        .sub-dropbtn {
+            font-size: 20px;
+            font-weight: bold;
+            background-color: transparent;
+            color: inherit;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .sub-dropdown {
+            position: relative;
+            /* Set position to relative for proper positioning of sub-dropdown */
+        }
+
+        .sub-dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #0fa0ee;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            top: 0;
+            left: 100%;
+            /* Position the sub-dropdown menu to the right side of the main dropdown */
+            margin-left: 10px;
+            /* Add some margin to create space between the main dropdown and sub-dropdown */
+            border-radius: 10px;
+        }
+
+        .sub-dropdown:hover .sub-dropdown-content,
+        .sub-dropdown-content:hover {
+            display: block;
+            /* Keep the sub-dropdown visible when hovering over it or the main dropdown button */
+        }
+
+
+
+        /* Sub-dropdown content (hidden by default)
+.sub-dropdown-content {
+    display: none;
+    position: absolute; /* Changed to absolute positioning */
+        /*background-color: #0fa0ee;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    right: 0; /* Positioned the sub-dropdown menu to the right */
+        /*top: 0; /* Adjusted the top position */
+        /*margin-top: 36px;
+}*/
+
+
+        /* Links inside the sub-dropdown */
+        .sub-dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        /* Change color of sub-dropdown links on hover */
+        .sub-dropdown-content a:hover {
+            background-color: #5eb4e9;
+        }
+
+        /* Show the sub-dropdown content on hover */
+        .sub-dropdown:hover .sub-dropdown-content {
+            display: block;
+        }
+
+        /* Change the background color of the sub-dropdown button when the sub-dropdown content is shown */
+        .sub-dropdown:hover .sub-dropbtn {
+            background-color: #ffffff;
+        }
+
+
+        /* High Contrast mode styles */
+        body.high-contrast {
+            background-color: #f0f404;
+            color: #fff;
+        }
+
+        body.high-contrast header {
+            background-color: #84f809;
+            color: #000;
+        }
+
+        body.high-contrast nav {
+            background-color: #f89809;
+            color: #000;
+        }
+
+        body.high-contrast .ticket-form {
+            background-color: #f0f404;
+            color: #000;
+        }
+
+        body.high-contrast button {
+            background-color: #686868;
+            color: #000;
+        }
+
+        body.high-contrast button:hover {
+            background-color: #000000;
+            color: #000000;
+
+        }
+
+        body.high-contrast button:hover {
+            animation: bubble 0.9s ease-out;
+            background-color: #27ae60;
+        }
+
+        /* High Contrast Mode button styles */
+        #high-contrast-btn {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            padding: 8px 15px;
+            background-color: #150303;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            z-index: 9999;
+        }
+
+        #amigo {
+            position: fixed;
+            bottom: 30px;
+            right: 120px;
+            padding: 8px 15px;
+            background-color: #da6a14;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            z-index: 9999;
+        }
+
+
+        /* Glass effect overlay */
+        /*.body-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.1); /* Adjust the opacity for the glass effect 
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4px); /* Apply blur effect to the overlay 
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgb(255, 255, 255);
+    z-index: -1; /* Send the overlay behind other content 
+}
+*/
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('bus_bg.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #ecf0f1;
+            position: relative;
+            /* Add position relative to create a stacking context */
+        }
+
+        /* Header styles */
+        header {
+            font-size: 20px;
+            /* Decrease font size */
+            background-color: rgba(52, 152, 219, 0.8);
+            /* Adjust the background color and opacity */
+            padding: 0.5em 0.5em;
+            /* Decrease padding */
+            text-align: center;
+            border-radius: 20px;
+            /* Add border radius for a rounded look */
+            backdrop-filter: blur(8px);
+            /* Apply blur effect */
+            -webkit-backdrop-filter: blur(8px);
+            /* For Safari */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            /* Add shadow */
+            margin-right: 20px;
+            margin-left: 20px;
+            margin-top: 20px;
+            margin-bottom: 30px;
+            /* Lower the header with respect to the page */
+            animation: fadeIn 3s;
+        }
+
+        /* Logo styles */
+        .header-logo {
+            max-width: 100px;
+            height: auto;
+            border-radius: 50%;
+            /* Make the logo circular */
+            margin-right: 20px;
+            border: 5px solid #0fa0ee;
+            /* Add a neon border */
+            box-shadow: 0 0 10px #0fa0ee;
+            /* Add a neon glow */
+            animation: fadeIn 3s;
+        }
+
+
+        /* Navbar styles */
+        nav {
+            font-size: 20px;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-around;
+            background-color: rgba(44, 62, 80, 0.7);
+            padding: 10px;
+            border-radius: 60px;
+            margin: 10px;
+            backdrop-filter: blur(10px);
+            /* Apply blur effect */
+            -webkit-backdrop-filter: blur(10px);
+            /* For Safari */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            /* Add shadow */
+        }
+
+
+
+        nav a {
+            text-decoration: none;
+            /* Remove underline */
+            color: inherit;
+            /* Inherit text color */
+        }
+
+        section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+            height: 50vh;
+            flex-wrap: wrap;
+            /* Added for responsiveness */
+        }
+
+        /* Ticket form styles */
+        .ticket-form {
+            font-size: 16px;
+            font-weight: bold;
+            background-color: rgba(44, 62, 80, 0.7);
+            padding: 30px;
+            border-radius: 30px;
+            max-width: 90%;
+            /* Modified for responsiveness */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+            /* Add shadow 
+            backdrop-filter: blur(10px);
+            /*Apply blur effect 
+            -webkit-backdrop-filter: blur(10px);
+            /* For Safari */
+            margin-right: auto;
+            /* Center the form horizontally */
+            margin-left: 0;
+            text-align: left;
+            animation: fadeIn 2s;
+            border: 5px solid rgba(45, 60, 70, 0.9);
+            /* Grey outline added */
+        }
+
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #000000;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 16px;
+            border: 1px solid #bdc3c7;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            font-size: 18px;
+            font-weight: bold;
+            background-color: #2ecc71;
+            color: #dae5e8;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: grabbing;
+            transition: background-color 0.3s;
+            width: 100%;
+            text-decoration: none;
+            /* Modified for responsiveness */
+        }
+
+        button a {
+            color: #ffffff;
+            /* Text color for the "Buy Tickets" text */
+        }
+
+
+        button:hover {
+            animation: bubble 0.9s ease-out;
+            background-color: #27ae60;
+        }
+
+        .chat-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 10px;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            z-index: 9999;
+        }
+
+        /* Chat button hover effect */
+        .chat-button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Chatbot styles */
+        .chat-popup {
+            display: none;
+            position: fixed;
+            bottom: 90px;
+            right: 30px;
+            width: 300px;
+            max-height: 400px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow-y: auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 9999;
+        }
+
+        /* Chatbot header styles */
+        .chat-popup-header {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+        }
+
+        /* Chatbot content styles */
+        .chat-popup-content {
+            padding: 20px;
+        }
+
+        /* Chatbot input styles */
+        .chat-input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        /* Chatbot message styles */
+        .chat-message {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            /* Align items vertically */
+        }
+
+        .header-logo {
+            max-width: 100px;
+            /* Adjust the maximum width of the logo as needed */
+            height: auto;
+            border-radius: 100px;
+            margin-right: 20px;
+        }
+
+        /* Additional styles for date input */
+        .ticket-form input[type="date"] {
+            width: calc(100% - 2px);
+            padding: 10px;
+            margin-bottom: 16px;
+            border: 1px solid #bdc3c7;
+            border-radius: 15px;
+            box-sizing: border-box;
+        }
+
+        .ticket-form input[type="number"] {
+            border-radius: 15px;
+            /* Changed from the default to 9px */
+        }
+
+        .ticket-form select#ticket-type {
+            border-radius: 15px;
+        }
+
+        .ticket-form select#boarding {
+            border-radius: 15px;
+        }
+
+        .ticket-form select#destination {
+            border-radius: 15px;
+        }
+
+        .ticket-form select#quantity {
+            border-radius: 15px;
+            /* Changed from the default to 9px */
+        }
+
+        #high-contrast-btn,
+        #amigo,
+        .chat-button {
+            border-radius: 100px;
+            /* Make buttons rectangular with rounded edges */
+            border: none;
+            /* Remove border */
+            cursor: pointer;
+        }
+
+        #high-contrast-btn,
+        #amigo {
+            width: auto;
+            /* Let the width adjust to content */
+        }
+
+        .chat-button {
+            width: 50px;
+            /* Set a fixed width for the chat button */
+            height: 50px;
+            /* Set a fixed height for the chat button */
+        }
+
+        /* Footer */
+        footer {
+            background-color: rgba(52, 152, 219, 0.8);
+            /* Adjust the background color and opacity */
+            padding: 0.5em 0.5em;
+            /* Decrease padding */
+            text-align: center;
+            border-radius: 20px;
+            /* Add border radius for a rounded look */
+            backdrop-filter: blur(5px);
+            /* Apply blur effect */
+            -webkit-backdrop-filter: blur(5px);
+            /* For Safari */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            /* Add shadow */
+            margin-right: 0.5px;
+            margin-left: 0.5px;
+            margin-top: 30px;
+            margin-bottom: 1px;
+
+            animation: fadeIn 1s;
+
+
+
+            position: relative;
+            bottom: 30;
+            width: 100%;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .footer-logo {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .footer-contact {
+            font-size: 1.2em;
+        }
+
+        .footer-contact p {
+            margin: 5px 0;
+        }
+
+
+
+
+        @keyframes bubble {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Media Query for responsiveness */
+        /* Existing styles remain unchanged */
+
+        /* Media Query for responsiveness */
+        @media only screen and (max-width: 768px) {
+            .dropbtn {
+                font-size: 16px;
+                /* Decrease font size */
+                padding: 8px 12px;
+                /* Adjust padding */
+            }
+
+            /* Dropdown content (hidden by default) */
+            .dropdown-content {
+                min-width: 140px;
+                font-size: 16px;
+                /* Decrease min-width */
+            }
+
+            /* Links inside the dropdown */
+            .dropdown-content a {
+                padding: 10px 14px;
+                /* Adjust padding */
+            }
+
+            /* Sub-dropdown button */
+            .sub-dropbtn {
+                font-size: 16px;
+                /* Decrease font size */
+                padding: 8px 12px;
+                /* Adjust padding */
+            }
+
+            /* Links inside the sub-dropdown */
+            .sub-dropdown-content a {
+                padding: 10px 14px;
+                /* Adjust padding */
+            }
+
+            header {
+                font-size: 16px;
+                /* Decrease font size for smaller screens */
+            }
+
+            nav {
+                font-size: 14px;
+                /* Decrease font size for smaller screens */
+                flex-direction: column;
+                /* Change the flex direction to stack links vertically */
+                gap: 10px;
+                /* Add gap between the links */
+            }
+
+            .header-logo {
+                max-width: 60px;
+                /* Adjust the maximum width of the logo for smaller screens */
+            }
+
+            .ticket-form {
+                width: 100%;
+                /* Set width to full for smaller screens */
+                padding: 20px;
+                /* Increase padding for better spacing */
+            }
+
+            .ticket-form input[type="date"],
+            .ticket-form input[type="number"],
+            .ticket-form select {
+                width: 100%;
+                /* Set width to full for smaller screens */
+            }
+
+            footer {
+                padding: 20px;
+                /* Increase padding for better spacing */
+            }
+
+            .footer-content {
+                flex-direction: column;
+                /* Change the flex direction to stack content vertically */
+                gap: 20px;
+                /* Add gap between the content */
+            }
+
+            .footer-logo {
+                max-width: 40px;
+                /* Adjust the maximum width of the logo for smaller screens */
+            }
+
+            .footer-contact {
+                font-size: 1em;
+                /* Adjust font size for smaller screens */
+            }
+        }
+
+        /* Additional styles for better responsiveness and layout adjustments */
+        body {
+            font-size: 16px;
+            /* Set a base font size */
+        }
+
+        header {
+            margin: 20px 10px;
+            /* Adjust margin for smaller screens */
+        }
+
+        nav {
+            margin: 10px;
+            /* Adjust margin for smaller screens */
+        }
+
+        .ticket-form {
+            max-width: 100%;
+            /* Set max-width to full for smaller screens */
+        }
+
+        button {
+            font-size: 16px;
+            /* Set font size for better readability on smaller screens */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="body-overlay"></div>
+    <button class="chat-button" onclick="toggleChatPopup()">🗨️</button>
+    <div class="chat-popup" id="chatPopup">
+        <!-- Chatbot header -->
+        <div class="chat-popup-header">
+            Chatbot
+            <!-- Close button -->
+            <span class="chat-popup-close" onclick="toggleChatPopup()">X</span>
+        </div>
+        <!-- Chatbot content -->
+        <div class="chat-popup-content" id="chatContent">
+            <div class="chat-message">Welcome! How can I help you?</div>
+        </div>
+        <!-- Chatbot input -->
+        <input type="text" class="chat-input" placeholder="Type your message..." onkeypress="handleKeyPress(event)">
+    </div>
+    <header>
+
+        <div class="header-content">
+            &nbsp;&nbsp;&nbsp;<img src="jetbus.jpg" alt="Jet Bus Logo" class="header-logo">
+            <h1>Jet Bus</h1>
+        </div>
+        <nav>
+
+            <div class="dropdown">
+                <button class="dropbtn">
+                    <span class="tts-icon" onclick="speakText('Home')">🏠︎</span> Home
+                </button>
+                <div class="dropdown-content">
+                    <div class="sub-dropdown">
+                        <button class="sub-dropbtn">Book Tickets ►</button>
+                        <div class="sub-dropdown-content">
+                            <a href="upcomingj.html">Upcoming Journeys</a>
+                            <a href="recentb.html">Recent Bookings</a>
+                            <a href="bookedt.html">Booking History</a>
+                        </div>
+                    </div>
+                    <a href="ftb.html">Foreign Tourist Booking</a>
+                    <div class="sub-dropdown">
+                        <button class="sub-dropbtn">Cancel Ticket ►</button>
+                        <div class="sub-dropdown-content">
+                            <a href="cancel-ct.html">E-Tickets</a>
+                            <a href="cancel-et.html">Counter Tickets</a>
+                            <!-- Add more options as needed -->
+                        </div>
+                    </div>
+                    <a href="bus-schedule.html">Bus Schedule</a>
+                    <a href="track-bus.html">Track your bus</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <button class="dropbtn">
+                    <span class="tts-icon" onclick="speakText('Contact')">☎</span> Contact Us
+                </button>
+                <div class="dropdown-content">
+                    <a href="contact.html">Contact Us</a>
+                    <a href="https://mail.google.com/mail/?tab=rm&ogbl">Email Us</a>
+                    <a href="https://twitter.com/">Tweet Us 𝕏</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <button class="dropbtn">
+                    <span class="tts-icon" onclick="speakText('About')">ℹ️</span> About
+                </button>
+                <div class="dropdown-content">
+                    <a href="about.html">About Us</a>
+                    <a href="members.html">Members</a>
+                    <a href="address.html">Address</a>
+                    <a href="help.html">Help</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <button class="dropbtn">
+                    <span class="tts-icon" onclick="speakText('Account')">🙍🏻‍♂️</span> Account
+                </button>
+                <div class="dropdown-content">
+                    <a href="account.html">Sign Up</a>
+                    <a href="account.html">Sign In</a>
+                    <a href="details.html">Account Details</a>
+                    <!-- Add more options as needed -->
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <button class="dropbtn">
+                    <span class="tts-icon" onclick="speakText('Careers')">💼</span> Careers
+                </button>
+                    <div class="dropdown-content">
+                        <a href="careers.html">Apply Now!</a>
+                    </div>                
+            </div>
+
+
+            <!-- <a href="tvm-e5.html" for="ticket-type">Home<span class="tts-icon" onclick="speakText('Home')">🔊   </span></label></a>
+            <a href="menu.html" for="ticket-type">Menu<span class="tts-icon" onclick="speakText('Menu')">🔊   </span></label></a>
+            <a href="contact.html" for="ticket-type">Contact<span class="tts-icon" onclick="speakText('Contact')">🔊   </span></label></a>
+            <a href="about.html" for="ticket-type">About<span class="tts-icon" onclick="speakText('About')">🔊   </span></label></a>
+            <a href="account.html" for="ticket-type">Account<span class="tts-icon" onclick="speakText('Account')">🔊   </span></label></a> -->
+
+        </nav>
+    </header>
+
+    <button id="high-contrast-btn" onclick="toggleHighContrast()">HC<span class="tts-icon"
+            onclick="speakText('Switch to High Contrast Mode')">🔊</span></button>
+    <button id="amigo" onclick="startSpeechRecognition()">Amigo<span class="tts-icon"
+            onclick="speakText('Amigo')">🔊</span></button>
+    <section>
+        <div class="ticket-form">
+            <label class="active-text" for="ticket-type">&nbsp&nbsp&nbsp&nbsp&nbspTicket Type <span class="tts-icon"
+                    onclick="speakText('Select Ticket Type')">🔊</span></label>
+            <select id="ticket-type" name="ticket-type">
+                <option value="single">Single Journey</option>
+                <option value="return">Return Journey</option>
+                <option value="daily">Daily Pass</option>
+                <option value="weekly">Weekly Pass</option>
+                <option value="monthly">Monthly Pass</option>
+            </select>
+
+            <label class="active-text" for="boarding">&nbsp&nbsp&nbsp&nbsp&nbspBoarding From <span class="tts-icon"
+                    onclick="speakText('Select Boarding point')">🔊</span></label>
+            <select id="boarding" name="boarding">
+                <option value="city-center">City Center</option>
+                <option value="suburb">Central Station</option>
+                <option value="airport">Airport</option>
+                <option value="shopping-mall">Main Street</option>
+                <option value="shopping-mall">Suburbia</option>
+                <option value="shopping-mall">Downtown</option>
+                <option value="shopping-mall">Beach Front</option>
+                <option value="shopping-mall">West End</option>
+                <option value="shopping-mall">East End</option>
+            </select>
+
+            <label class="active-text" for="destination">&nbsp&nbsp&nbsp&nbsp&nbspTo Destination <span class="tts-icon"
+                    onclick="speakText('Select Destination point')">🔊</span></label>
+            <select id="destination" name="destination">
+                <option value="city-center">City Center</option>
+                <option value="suburb">Central Station</option>
+                <option value="airport">Airport</option>
+                <option value="shopping-mall">Main Street</option>
+                <option value="shopping-mall">Suburbia</option>
+                <option value="shopping-mall">Downtown</option>
+                <option value="shopping-mall">Beach Front</option>
+                <option value="shopping-mall">West End</option>
+                <option value="shopping-mall">East End</option>
+            </select>
+
+            <label class="active-text" for="quantity">&nbsp&nbsp&nbsp&nbsp&nbspQuantity <span class="tts-icon"
+                    onclick="speakText('Select Quantity')">🔊</span></label>
+            <input type="number" id="quantity" name="quantity" min="1" value="1">
+
+            <label for="travel-date">&nbsp&nbsp&nbsp&nbsp&nbspTravel Date <span class="tts-icon"
+                    onclick="speakText('Select Travel Date')">🔊</span></label>
+            <input type="date" id="travel-date" name="travel-date">
+
+            <button type="submit" id="buyTicketsBtn"><a style="text-decoration: none;">Buy Tickets ! </a><span
+                    class="tts-icon" onclick="speakText('Buy Tickets')">🔊</span></button>
+                    <div id="loadingScreen" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.7); z-index: 9999;">
+                        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; font-size: 24px;">
+                            Wait a Sec... <br> <br>Booking Tickets!...
+                        </div>
+                        </div>
+
+
+        </div>
+        <footer>
+            <div class="footer-content">
+                <img src="gt.jpeg" alt="Jet Bus Logo" class="header-logo">
+                <h2>Special Offers</h2>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Get 10% off on return journeys!<br><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Exclusive discounts for monthly pass!<br><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Early bird discounts for daily pass!</p>
+            </div>
+        </footer>
+        <!-- Footer Section -->
+        <footer>
+            <div class="footer-content">
+                &nbsp;&nbsp;&nbsp;<img src="jetbus.jpg" alt="Jet Bus Logo" class="header-logo">
+                <h1>Jet Bus</h1>
+            </div>
+            <div class="footer-contact">
+                <p>Contact Us:</p>
+                <p>Phone: +1 123 456 7890</p>
+                <p>Email: info@jetbus.com</p>
+                <p>Address: 123 Bus St, City, Country</p>
+                <br>
+                <p>Copyright © 2024 Jet Bus. All rights reserved.</p>
+            </div>
+        </footer>
+    </section>
+    <script>
+        // JavaScript function to speak text
+        function speakText(text) {
+            const speech = new SpeechSynthesisUtterance(text);
+            speechSynthesis.speak(speech);
+        }
+    </script>
+    <script>
+        // JavaScript function to toggle High Contrast Mode mode
+        function toggleHighContrast() {
+            const body = document.body;
+            body.classList.toggle('high-contrast');
+        }
+    </script>
+    <script>
+        function startSpeechRecognition() {
+            const recognition = new webkitSpeechRecognition() || new SpeechRecognition(); // Initialize SpeechRecognition
+            recognition.lang = 'en-US'; // Set language to English (United States)
+
+            recognition.onresult = function (event) { // When speech recognition is successful
+                const result = event.results[0][0].transcript.trim(); // Get the recognized text
+                alert(result); // For demonstration, alert the recognized text
+            };
+
+            recognition.onerror = function (event) { // When an error occurs
+                alert('Speech recognition error: ' + event.error); // Alert the error message
+            };
+
+            recognition.start(); // Start speech recognition
+        }
+    </script>
+    <script>
+        // Toggle chatbot popup visibility
+        function toggleChatPopup() {
+            const chatPopup = document.getElementById('chatPopup');
+            chatPopup.style.display = chatPopup.style.display === 'block' ? 'none' : 'block';
+        }
+
+        // Handle key press event in chat input
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                const inputElement = event.target;
+                const message = inputElement.value.trim();
+                if (message !== '') {
+                    displayMessage(message);
+                    inputElement.value = '';
+                    respondToMessage(message);
+                }
+            }
+        }
+
+        // Display user message in chat
+        function displayMessage(message) {
+            const chatContent = document.getElementById('chatContent');
+            const messageElement = document.createElement('div');
+            messageElement.classList.add('chat-message');
+            messageElement.textContent = message;
+            chatContent.appendChild(messageElement);
+            chatContent.scrollTop = chatContent.scrollHeight;
+        }
+
+        // Generate response to user message
+        function respondToMessage(message) {
+            let response;
+            // Simple example: Echo user message as response
+            response = "You said: " + message;
+            displayMessage(response);
+           
+        if (message.toLowerCase() === 'home') {
+            window.location.href = 'index.html';
+        } else if (message.toLowerCase() === 'upcoming journeys') {
+            window.location.href = 'upcomingj.html';
+        } else if (message.toLowerCase() === 'recent bookings') {
+            window.location.href = 'recentb.html';
+        } else if (message.toLowerCase() === 'booking history') {
+            window.location.href = 'bookedt.html';
+        } else if (message.toLowerCase() === 'foreign tourist') {
+            window.location.href = 'ftb.html';
+        } else if (message.toLowerCase() === 'cancel E tickets') {
+            window.location.href = 'cancel-et.html';
+        } else if (message.toLowerCase() === 'cancel counter tickets') {
+            window.location.href = 'cancel-ct.html';
+        } else if (message.toLowerCase() === 'bus schedule') {
+            window.location.href = 'bus-schedule.html';
+        } else if (message.toLowerCase() === 'track bus') {
+            window.location.href = 'track-bus.html';
+        } else if (message.toLowerCase() === 'about') {
+            window.location.href = 'about.html';
+        } else if (message.toLowerCase() === 'account') {
+            window.location.href = 'account.html';
+        } else if (message.toLowerCase() === 'contact' || message.toLowerCase() === 'contact us') {
+            window.location.href = 'contact.html';
+        } else if (message.toLowerCase() === 'email') {
+            window.location.href = 'mailto:example@gmail.com';
+        } else if (message.toLowerCase() === 'twitter') {
+            window.location.href = 'https://twitter.com';
+        } else if (message.toLowerCase() === 'members') {
+            window.location.href = 'members.html';
+        } else if (message.toLowerCase() === 'address') {
+            window.location.href = 'address.html';
+        } else if (message.toLowerCase() === 'help') {
+            window.location.href = 'help.html';
+        } else if (message.toLowerCase() === 'sign up' || message.toLowerCase() === 'sign in') {
+            window.location.href = 'account.html';
+        } else if (message.toLowerCase() === 'account-details') {
+            window.location.href = 'details.html';
+        } else if (message.toLowerCase() === 'careers') {
+            window.location.href = 'careers.html';
+        } else {
+            alert('Invalid option');
+        }
+    }
+    </script>
+    <script>
+        // Mapping of voice commands to URLs
+        const voiceCommands = {
+            'home': 'index.html',
+            'upcoming journeys': 'upcomingj.html',
+            'recent bookings': 'recentb.html',
+            'booking history': 'bookedt.html',
+            'foreign tourist': 'ftb.html',
+            'cancel E tickets': 'cancel-et.html',
+            'cancel counter tickets': 'cancel-ct.html',
+            'bus schedule': 'bus-schedule.html',
+            'track bus': 'track-bus.html',
+            'about': 'about.html',
+            'account': 'account.html',
+            'contact': 'contact.html',
+            'contact us': 'contact.html',
+            'email': 'gmail.com',
+            'twitter': 'twitter.com',
+            'members': 'members.html',
+            'address': 'address.html',
+            'help': 'help.html',
+            'members': 'members.html',
+            'sign up': 'account.html',
+            'sign in': 'account.html',
+            'account-details': 'details.html',
+            'careers': 'careers.html'
+            
+
+            
+            // Update with your home page URL
+            // Add more voice commands and corresponding URLs as needed
+        };
+
+        // Initialize speech recognition
+        const recognition = new webkitSpeechRecognition() || new SpeechRecognition();
+        recognition.lang = 'en-US'; // Set language to English (United States)
+        recognition.continuous = true; // Keep listening continuously
+
+        // Function to start speech recognition
+        function startSpeechRecognition() {
+            recognition.start(); // Start listening for speech input
+            var beep = new Audio('beep.mp3');
+            beep.play();
+
+            // When speech is recognized
+            recognition.onresult = function (event) {
+                const result = event.results[event.results.length - 1][0].transcript.toLowerCase(); // Get the recognized text
+                console.log('Recognized:', result);
+
+                // Check if the recognized text matches any voice command
+                let matchedCommand = null;
+                for (const command in voiceCommands) {
+                    if (result.includes(command)) {
+                        matchedCommand = command;
+                        break;
+                    }
+                }
+
+                // If a matching command is found, redirect to the corresponding URL
+                if (matchedCommand !== null) {
+                    const url = voiceCommands[matchedCommand];
+                    window.location.href = url;
+                } else {
+                    // If no matching command is found, display a message
+                    alert("Sorry, I can't understand. Please be specific.");
+                }
+            };
+
+            // When an error occurs
+            recognition.onerror = function (event) {
+                console.error('Speech recognition error:', event.error); // Log the error message
+            };
+        }
+    </script>
+    <script>
+        // Prevent right-click
+        document.addEventListener('contextmenu', function (e) {
+            e.preventDefault();
+            showUnauthorizedAccessDialog();
+        });
+
+        // Show unauthorized access dialog
+        function showUnauthorizedAccessDialog() {
+            var dialog = document.createElement('div');
+            dialog.style.position = 'fixed';
+            dialog.style.top = '0';
+            dialog.style.left = '0';
+            dialog.style.width = '100%';
+            dialog.style.height = '100%';
+            dialog.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
+            dialog.style.display = 'flex';
+            dialog.style.justifyContent = 'center';
+            dialog.style.alignItems = 'center';
+            dialog.style.zIndex = '9999';
+
+            var content = document.createElement('div');
+            content.style.backgroundColor = '#fff';
+            content.style.padding = '20px';
+            content.style.borderRadius = '5px';
+            content.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.3)';
+
+            var text = document.createElement('div');
+            text.textContent = 'Unauthorized Access';
+            text.style.color = '#000';  // Set text color to black
+            content.appendChild(text);
+
+            var closeButton = document.createElement('button');
+            closeButton.textContent = 'Close';
+            closeButton.style.marginTop = '15px';
+            closeButton.addEventListener('click', function () {
+                dialog.parentNode.removeChild(dialog);
+            });
+
+            content.appendChild(closeButton);
+            dialog.appendChild(content);
+            document.body.appendChild(dialog);
+        }
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.querySelector('.ticket-form');
+            const inputs = form.querySelectorAll('input, select');
+            const buyTicketsBtn = document.getElementById('buyTicketsBtn');
+            const loadingScreen = document.getElementById('loadingScreen');
+    
+            buyTicketsBtn.addEventListener('click', function(event) {
+                for (let input of inputs) {
+                    if (!input.value) {
+                        event.preventDefault();
+                        alert('Please fill all the details.');
+                        return;
+                    }
+                }
+                
+                // Show loading screen
+                loadingScreen.style.display = 'block';
+    
+                // Wait for 3 seconds before redirecting
+                setTimeout(function() {
+                    window.location.href = 'buy.html';
+                }, 3000);
+            });
+        });
+    </script>
+    
+</body>
+
+</html>

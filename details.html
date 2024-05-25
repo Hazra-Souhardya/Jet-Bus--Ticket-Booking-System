@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jet Bus - Account Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 400px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #666;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-bottom: 10px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .sign-out-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .sign-out-message {
+            font-size: 24px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Account Details</h1>
+        <form id="accountDetailsForm">
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name" required><br>
+
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" required><br>
+
+            <label for="password">Password:</label><br>
+            <input type="password" id="password" name="password" required><br>
+
+            <label for="address">Address:</label><br>
+            <input type="text" id="address" name="address" required><br>
+
+            <label for="phoneNumber">Phone Number:</label><br>
+            <input type="tel" id="phoneNumber" name="phoneNumber" required><br>
+
+            <button type="submit">Update Account</button>
+        </form>
+        <br><br>
+        <button onclick="signOut()">Sign Out</button>
+    </div>
+
+    <!-- Sign Out Message Container -->
+    <div class="sign-out-container" id="signOutContainer">
+        <div class="sign-out-message">Signed out successfully!</div>
+    </div>
+
+    <!-- JavaScript for dummy account details and form submission -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Load dummy account details from local storage or set default values
+            let userDetails = JSON.parse(localStorage.getItem("userDetails"));
+            if (!userDetails) {
+                userDetails = {
+                    name: "John Doe",
+                    email: "dummy@example.com",
+                    password: "dummyPassword",
+                    address: "123 Street, City, Country",
+                    phoneNumber: "1234567890"
+                };
+            }
+
+            // Populate form fields with dummy data
+            document.getElementById("name").value = userDetails.name;
+            document.getElementById("email").value = userDetails.email;
+            document.getElementById("password").value = userDetails.password;
+            document.getElementById("address").value = userDetails.address;
+            document.getElementById("phoneNumber").value = userDetails.phoneNumber;
+
+            // Form submission logic
+            document.getElementById("accountDetailsForm").addEventListener("submit", function(event){
+                event.preventDefault();
+
+                // Get form values
+                const name = document.getElementById("name").value;
+                const email = document.getElementById("email").value;
+                const password = document.getElementById("password").value;
+                const address = document.getElementById("address").value;
+                const phoneNumber = document.getElementById("phoneNumber").value;
+
+                // Update user details in local storage
+                localStorage.setItem("userDetails", JSON.stringify({
+                    name: name,
+                    email: email,
+                    password: password,
+                    address: address,
+                    phoneNumber: phoneNumber
+                }));
+
+                alert("Account details updated successfully!");
+            });
+        });
+
+        function signOut() {
+            localStorage.removeItem("userDetails");
+            document.getElementById("signOutContainer").style.display = "flex";
+            setTimeout(() => {
+                document.getElementById("signOutContainer").style.display = "none";
+            }, 10000);
+        }
+    </script>
+</body>
+</html>

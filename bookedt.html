@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jet Bus - Booked Tickets</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 600px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        th {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Booked Tickets</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Ticket ID</th>
+                    <th>Date</th>
+                    <th>From</th>
+                    <th>To</th>
+                    <th>Seat No.</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>00178</td>
+                    <td>2024-04-10</td>
+                    <td>Airport</td>
+                    <td>Downtown</td>
+                    <td>A12</td>
+                    <td>Confirmed</td>
+                </tr>
+                <tr>
+                    <td>00177</td>
+                    <td>2024-04-12</td>
+                    <td>Airport</td>
+                    <td>Downtown</td>
+                    <td>A12</td>
+                    <td>Confirmed</td>
+                </tr>
+                <tr>
+                    <td>00167</td>
+                    <td>2024-04-14</td>
+                    <td>Airport</td>
+                    <td>Downtown</td>
+                    <td>A12</td>
+                    <td>Confirmed</td>
+                </tr>
+                <tr>
+                    <td>00278</td>
+                    <td>2024-04-19</td>
+                    <td>Downtown</td>
+                    <td>Zoo</td>
+                    <td>B23</td>
+                    <td>Cancelled</td>
+                </tr>
+                <tr>
+                    <td>00386</td>
+                    <td>2024-04-20</td>
+                    <td>Airport</td>
+                    <td>Zoo</td>
+                    <td>C34</td>
+                    <td>Pending</td>
+                </tr>
+            </tbody>
+        </table>
+        <button onclick="goToHomePage()">Go to Home Page</button>
+    </div>
+
+    <!-- JavaScript for navigation -->
+    <script>
+        function goToHomePage() {
+            window.location.href = "index.html";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Address and Location</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #444;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 0 15px;
+        }
+
+        nav a:hover {
+            background-color: #555;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+        }
+
+        .location-info {
+            margin-bottom: 20px;
+        }
+
+        .location-info h3 {
+            margin-top: 0;
+        }
+
+        .location-info p {
+            margin-bottom: 10px;
+        }
+
+        .map {
+            width: 100%;
+            height: 400px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Address and Location</h1>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+    </nav>
+
+    <div class="container">
+        <div class="location-info">
+            <h2>Our Address</h2>
+            <p>123 Main St</p>
+            <p>City, State, ZIP</p>
+            <p>Country</p>
+            <p>Email: info@example.com</p>
+            <p>Phone: +123 456 7890</p>
+        </div>
+
+        <div class="location-info">
+            <h2>Ways to Reach Us</h2>
+            <p><strong>By Car:</strong> Take the Main St and turn right at Elm St. Continue straight for 2 miles and
+                you'll find our location on the right.</p>
+            <p><strong>By Public Transport:</strong> Take the Green Line to the City Center stop. Our location is a
+                5-minute walk from the station.</p>
+            <p><strong>By Bicycle:</strong> Ride along the Riverside Bike Path until you reach the Riverside Park. Our
+                location is just across the park.</p>
+
+        </div>
+
+        <div class="map">
+            <!-- Embedded Google Map -->
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.025485727846!2d2.351086314317858!3d48.856613879292255!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e1f06e2b70f%3A0x40b82c3688c9460!2sEiffel%20Tower!5e0!3m2!1sen!2sfr!4v1617374820938!5m2!1sen!2sfr"
+                width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </div>
+
+</body>
+
+</html>

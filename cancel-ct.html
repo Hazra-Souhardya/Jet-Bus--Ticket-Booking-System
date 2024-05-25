@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cancel Counter-Tickets</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #444;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 0 15px;
+        }
+
+        nav a:hover {
+            background-color: #555;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        .cancel-form {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        .cancel-form label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .cancel-form input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .cancel-form input[type="submit"] {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .cancel-form input[type="submit"]:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Cancel Counter-Tickets</h1>
+</header>
+
+<nav>
+    <a href="index.html">Home</a>
+</nav>
+
+<div class="container">
+    <div class="cancel-form">
+        <form action="#" onsubmit="cancelTicket(); return false;">
+            <label for="ticketNumber">Enter Ticket Number:</label>
+            <input type="text" id="ticketNumber" name="ticketNumber" placeholder="Ticket Number" required>
+            <input type="submit" value="Cancel Counter-Ticket">
+        </form>
+        <p id="message"></p>
+    </div>
+</div>
+
+<script>
+    function cancelTicket() {
+        const ticketNo = document.getElementById('ticketNumber').value;
+        const message = document.getElementById('message');
+
+        if (ticketNo.length !== 5 || isNaN(ticketNo)) {
+            message.textContent = 'Invalid ticket number. Please enter a 5-digit number.';
+            return;
+        }
+
+        // Here you can add the logic to cancel the ticket, for now, it will just display a message
+        message.textContent = `Ticket ${ticketNo} has been successfully cancelled.`;
+    }
+</script>
+
+</body>
+</html>
